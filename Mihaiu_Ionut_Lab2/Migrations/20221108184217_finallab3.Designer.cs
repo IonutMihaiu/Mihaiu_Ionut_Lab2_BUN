@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mihaiu_Ionut_Lab2.Data;
 
@@ -11,9 +12,10 @@ using Mihaiu_Ionut_Lab2.Data;
 namespace Mihaiu_Ionut_Lab2.Migrations
 {
     [DbContext(typeof(Mihaiu_Ionut_Lab2Context))]
-    partial class Mihaiu_Ionut_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221108184217_finallab3")]
+    partial class finallab3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
