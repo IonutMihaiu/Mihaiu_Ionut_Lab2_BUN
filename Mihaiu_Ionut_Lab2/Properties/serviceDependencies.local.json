@@ -3,6 +3,14 @@
     "mssql1": {
       "type": "mssql.local",
       "connectionId": "ConnectionStrings:Mihaiu_Ionut_Lab2Context"
+    },
+    "mssql2": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:LibraryIdentityContextContextConnection"
+    },
+    "mssql3": {
+      "type": "mssql.local",
+      "connectionId": "ConnectionStrings:LibraryIdentityContextConnection"
     }
   }
 }

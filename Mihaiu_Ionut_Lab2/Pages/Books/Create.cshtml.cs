@@ -22,18 +22,21 @@ namespace Mihaiu_Ionut_Lab2.Pages.Books
         }
         public IActionResult OnGet()
         {
+           
+            var book = new Book();
+            book.BookCategories = new List<BookCategory>();
+            PopulateAssignedCategoryData(_context, book);
             var authorList = _context.Author.Select(x => new
             {
                 x.ID,
                 FullName = x.LastName + " " + x.FirstName
             });
-            ViewData["AuthorID"] = new SelectList(authorList, "ID", "FullName");
-            ViewData["PublisherID"] = new SelectList(_context.Publisher, "ID",
-           "PublisherName");
 
-            var book = new Book();
-            book.BookCategories = new List<BookCategory>();
-            PopulateAssignedCategoryData(_context, book);
+            
+            ViewData["AuthorID"] = new SelectList(authorList, "ID", "FullName");
+            ViewData["PublisherID"] = new SelectList(_context.Publisher, "ID","PublisherName");
+
+           
             return Page();
         }
         [BindProperty]
@@ -56,7 +59,7 @@ namespace Mihaiu_Ionut_Lab2.Pages.Books
             if (await TryUpdateModelAsync<Book>(
             newBook,
             "Book",
-            i => i.Title, i => i.Author,
+            i => i.Title, i => i.AuthorID,
             i => i.Price, i => i.PublishingDate, i => i.PublisherID))
             {
                 _context.Book.Add(newBook);
