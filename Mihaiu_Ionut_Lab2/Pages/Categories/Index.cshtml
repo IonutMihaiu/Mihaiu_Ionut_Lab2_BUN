@@ -20,8 +20,15 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Category) {
-        <tr>
+    <tbody>
+            @foreach (var item in Model.CategoryData.Categories)
+            {
+                string selectedRow = "";
+                if (item.ID == Model.CategoryID)
+                {
+                    selectedRow = "table-success";
+                }
+            <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
@@ -34,3 +41,32 @@
 }
     </tbody>
 </table>
+@if (Model.CategoryData.BookCategories != null)
+{
+    <h3>Books Edited by Selected Category</h3>
+    <table class="table">
+
+        @foreach (var item in Model.CategoryData.Categories)
+        {
+            string selectedRow = "";
+            if (item.ID == Model.CategoryID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
+
+                <td>
+                    @{
+                        foreach (var b in item.BookCategories)
+                        {
+
+                            @b.Book.Title @: @b.Book.Author.FullName
+
+                            <br />
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+    }
